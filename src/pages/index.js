@@ -11,8 +11,25 @@ import Wave from "../components/Wave"
 import staticdata from "../../staticdata.json"
 import Cell from "../components/Cell"
 import reactImage from "../images/logo-react.png"
+import styled from "styled-components"
 
-console.log(staticdata.cells)
+const SectionCaption = styled.h2 `
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #94A4BA;
+  text-align: center;
+`
+
+const SectionCellGroup = styled.div `
+  max-width: 800px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+
+`
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -53,6 +70,8 @@ const IndexPage = () => (
       title="React for designers"
       text="Learn how to build a modern site using React and the most efficient tools. Get you site up and running, hosted with netlify."
       />
+      <SectionCaption>12 sections - 6 hours</SectionCaption>
+      <SectionCellGroup>
       {
         staticdata.cells.map(cell => (
           <Cell
@@ -62,6 +81,8 @@ const IndexPage = () => (
           />
         ))
       }
+      </SectionCellGroup>
+   
     </div>
     
     
