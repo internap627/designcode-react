@@ -3,9 +3,13 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Footer from '../components/Footer'
 import "./layout.css"
 
+
+
 const Layout = ({ children }) => (
+  
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -13,18 +17,34 @@ const Layout = ({ children }) => (
           siteMetadata {
             title
           }
+        },
+        allContentfulLink {
+          edges {
+            node {
+              title
+              url
+            }
+          }
         }
       }
     `}
     render={data => (
       <>
         
-          <main>{children}</main>
+          <main>{children}
+          <Footer 
+          data={data}
+          />
+          </main>
           
-        
       </>
+      
     )}
+    
   />
+  
+
+  
 )
 
 Layout.propTypes = {
@@ -32,3 +52,5 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+
